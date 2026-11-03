@@ -1,0 +1,7 @@
+name: ProducerConsumerDesign
+subtitle: Four Thread-Safe Producer-Consumer Designs in C++
+url: https://github.com/JohnBlue-git/ProducerConsumerDesign
+kind: self-directed
+last_reviewed: 2026-11-03
+tags: [cpp, concurrency]
+short: "Four thread-safe producer-consumer designs in C++: ring buffer, unbounded queue, C++20 semaphore ring buffer, and a Folly MPMC queue comparison."

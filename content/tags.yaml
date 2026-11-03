@@ -1,0 +1,54 @@
+# Controlled vocabulary. resume/validate.py rejects any tag, flavor, kind, or level not listed here,
+# so a typo like "secuirty" fails the build instead of silently dropping a bullet.
+# Add a new entry here first, then use it.
+
+# Selection tags on summary / experience bullets (targets select by these)
+bullet_tags:
+  core: always-relevant evidence; most targets select it
+  general: general-software framing (SW target)
+  bmc: BMC / OpenBMC / Redfish framing
+  bmc-depth: shows depth inside the BMC codebase (porting, upstream tracking)
+  security: security-relevant work or framing
+  performance: measurable speed / memory / startup gains
+  debugging: crash, lifetime, concurrency, cross-layer debugging
+  architecture: design, modernization, refactoring
+  standards: spec compliance (DMTF, protocols)
+  testing: test / validation systems
+  process: workflow or process design
+  delivery: build, deployment, release, repo organization
+  collaboration: cross-team work
+  docs: documentation and guides
+  flagship: the strongest story; deck and resume should lead with it
+
+# Topic tags on projects (used by tailoring and the deck)
+project_tags:
+  security: security tooling or study
+  ebpf: eBPF / XDP / kernel instrumentation
+  tls: TLS / PKI / HTTPS
+  bmc: BMC / OpenBMC ecosystem
+  protocol: wire protocols (PLDM, MCTP, IPMI)
+  ipc: inter-process communication (D-Bus, Varlink, sockets, shared memory)
+  linux: Linux system programming
+  build: build systems (Yocto, CMake, Meson)
+  cpp: Modern C++
+  go: Golang
+  backend: backend services
+  api: REST / API design
+  concurrency: threads, async, coroutines
+  testing: test frameworks and test design
+  devops: containers, CI/CD, Kubernetes
+  flagship: the strongest story
+
+# Wording variants a bullet's `text:` may define; targets list them in `flavor`
+flavors: [default, bmc, security]
+
+# experience bullet ownership (see experience/insyde.yaml header)
+ownership: [owned, contributed, rotation]
+
+# project kinds; anything but "work" must be labeled on the resume
+project_kinds: [self-directed, work, coursework, oss-contribution]
+
+skill_tiers: [company, industry, transferable]
+skill_levels: [conceptual, working, proficient, expert]
+fact_status: [verified, unverified, superseded]
+layout_sections: [summary, skills, experience, education, projects]

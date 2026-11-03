@@ -1,5 +1,14 @@
 name: GoVarlink
+subtitle: D-Bus vs Varlink IPC, Compared Across Four Language Runtimes
 url: https://github.com/JohnBlue-git/GoVarlink
 kind: self-directed
-tags: [ipc, go, linux]
-short: "Implementation examples and experiments focused on lightweight IPC mechanisms and service communication."
+last_reviewed: 2026-11-03
+tags: [ipc, linux, go, cpp, concurrency]
+short: "D-Bus vs Varlink IPC comparison: one OpenBMC-style interface implemented in C++20, Go, Python, and Rust, with a benchmark harness."
+bullets:
+  - id: gv-impl
+    text: "Implemented the same OpenBMC-style calculator interface as a Varlink service in four async runtimes: C++20 coroutines, Go goroutines/channels, Python asyncio, and Rust tokio."
+  - id: gv-bench
+    text: "Built a pytest benchmark harness measuring throughput, latency, and peak memory; in this workload Varlink C++ reached about {{ f.gv_varlink_vs_dbus }} the throughput of the D-Bus C++ baseline with {{ f.gv_rss_lower }} lower RSS."
+  - id: gv-analysis
+    text: "Documented why the brokerless socket path wins here and where the comparison stops being fair (runtime scheduling and GC overhead, short-call JSON cost, run-to-run variance)."

@@ -1,5 +1,14 @@
 name: HowToSDBusPlus
+subtitle: Modern C++ D-Bus Services with sdbusplus, from Basics to Benchmarks
 url: https://github.com/JohnBlue-git/HowToSDBusPlus
 kind: self-directed
-tags: [bmc, ipc, cpp, linux]
+last_reviewed: 2026-11-03
+tags: [bmc, ipc, cpp, linux, concurrency]
 short: "Practical guide and implementation examples for modern C++ DBus service development, inter-process communication, and Linux system programming."
+bullets:
+  - id: sd-styles
+    text: "Implemented one D-Bus contract in six styles (Boost.Asio, sdbusplus async coroutines, CRTP, and sdbus++ YAML-generated bindings) to compare service architectures used in OpenBMC."
+  - id: sd-bench
+    text: "Wrote a benchmark runner reporting Ops/s, latency, and peak RSS per implementation, with notes on why timer-awaiting coroutine targets are not fair CPU-only competitors."
+  - id: sd-env
+    text: "Packaged a reproducible Docker development image and Meson build covering basic calls, signals, properties, and generated server/client examples."

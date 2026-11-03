@@ -68,7 +68,7 @@ def write(m, path):
     _para(doc, [(pr["name"], True)], size=21, space_after=3)
     if m.get("role"):
         _font(_para(doc, space_after=3).add_run(m["role"]), 11, True, color=RGBColor(0x00, 0x89, 0x7E))
-    _para(doc, [(f"{pr['location']}  |  {pr['email']}  |  {pr['phone']}", False)], size=10)
+    _para(doc, [("  |  ".join(x for x in (pr.get("location"), pr.get("email"), pr.get("phone")) if x), False)], size=10)
     _para(doc, [("  |  ".join(f"{l['label']}: {l['url']}" for l in pr["links"]), False)], size=10, space_after=5)
     hp = _para(doc, [(m["headline_plain"], True)], space_after=4)
     _shade(hp, "D9DDE3")

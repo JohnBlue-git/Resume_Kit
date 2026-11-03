@@ -1,0 +1,7 @@
+name: HowToBoostAsio
+subtitle: Boost.Asio Scheduling and Design Study
+url: https://github.com/JohnBlue-git/HowToBoostAsio
+kind: self-directed
+last_reviewed: 2026-11-03
+tags: [cpp, concurrency, bmc]
+short: "Study of how Boost.Asio services schedule work and serialize state (io_context, threads, strands), with comparison examples and the OpenBMC bmcweb pattern."

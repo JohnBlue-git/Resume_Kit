@@ -1,5 +1,14 @@
 name: HowToPLDM
+subtitle: QEMU-Emulated OpenBMC with a Real MCTP-over-I2C PLDM Stack
 url: https://github.com/JohnBlue-git/HowToPLDM
 kind: self-directed
-tags: [bmc, protocol]
-short: "Technical notes and implementation examples focused on protocol architecture and system integration concepts."
+last_reviewed: 2026-11-03
+tags: [bmc, protocol, build, linux]
+short: "Yocto/OpenBMC layer that builds a QEMU-emulated AST2600 BMC with an MCTP-over-I2C PLDM device model, to exercise the real kernel MCTP/PLDM stack without hardware."
+bullets:
+  - id: pl-layer
+    text: "Built a Yocto/OpenBMC layer and machine definition for a QEMU-emulated AST2600 BMC, with repo manifests and ready-to-use build configuration."
+  - id: pl-stack
+    text: "Added an MCTP-over-I2C PLDM terminus device model so the real kernel and userspace stack (aspeed_i2c, mctp-i2c, mctpd for endpoint setup, pldmd/pldmtool) runs without physical hardware."
+  - id: pl-docs
+    text: "Documented the architecture, service flow, and source-level walkthrough, plus verification steps for each layer."

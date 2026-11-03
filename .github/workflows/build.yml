@@ -1,0 +1,67 @@
+# Builds every resume target and the deck on each push; the files are attached to the run
+# (Actions tab -> run -> Artifacts). Edit YAML in the GitHub web editor and download the result.
+# Weekly (and on demand) it also runs the GitHub sync and attaches the report.
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 1 * * 1"   # Mondays 01:17 UTC (09:17 Taipei)
+
+jobs:
+  resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - name: Private overlay (optional secret RESUME_PRIVATE_YAML)
+        env: { PRIVATE: "${{ secrets.RESUME_PRIVATE_YAML }}" }
+        if: env.PRIVATE != ''
+        run: printf '%s\n' "$PRIVATE" > content/private.yaml
+      - run: python resume/validate.py
+      - run: python resume/build.py
+      - uses: actions/upload-artifact@v4
+        with: { name: resumes, path: out/resume/ }
+
+  deck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends libreoffice-impress poppler-utils fonts-crosextra-carlito fonts-crosextra-caladea
+      - run: pip install -r requirements.txt && python -m playwright install --with-deps chromium
+      - run: cd deck && npm install --no-audit --no-fund
+      - run: bash deck/build.sh
+      - run: python deck/src/qa_interact.py out/deck/Yujen_Lan_Interview_Deck.html
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deck
+          path: |
+            out/deck/*.pptx
+            out/deck/*.pdf
+            out/deck/*.html
+
+  github-sync:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - run: python tools/github_sync.py
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: github-sync
+          path: |
+            out/github/report.md
+            content/github/snapshot.yaml

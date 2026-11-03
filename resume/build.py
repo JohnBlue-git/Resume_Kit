@@ -34,6 +34,10 @@ def load(p):
 class Content:
     def __init__(self):
         self.profile = load(CONTENT / "profile.yaml")
+        # Optional, git-ignored overlay for details you don't want in a public repo (e.g. phone).
+        private = CONTENT / "private.yaml"
+        if private.exists():
+            self.profile.update(load(private) or {})
         self.facts = load(CONTENT / "facts.yaml")
         self.summary = load(CONTENT / "summary.yaml")["bullets"]
         self.experience = {p.stem: load(p) for p in sorted((CONTENT / "experience").glob("*.yaml"))}
@@ -171,6 +175,14 @@ def review_md(m, r):
 
 
 def main(names):
+    import validate
+    errors, warnings = validate.run(verbose=False)
+    for w in warnings:
+        print(f"  note: {w}")
+    if errors:
+        for e in errors:
+            print(f"  ERROR: {e}")
+        sys.exit("content/targets have errors; fix them first (python3 resume/validate.py)")
     c = Content()
     env = Environment(loader=FileSystemLoader(HERE / "templates"), undefined=StrictUndefined, autoescape=False)
     tpl = env.get_template("resume.html.j2")

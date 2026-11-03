@@ -1,0 +1,3 @@
+# Copy to content/private.yaml (git-ignored). Keys here override content/profile.yaml at build time.
+# Use it for anything you don't want in a public repo, then delete those keys from profile.yaml.
+phone: "09xx-xxx-xxx"

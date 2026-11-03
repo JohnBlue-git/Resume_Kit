@@ -1,5 +1,14 @@
 name: MultiFish
+subtitle: Multi-BMC Redfish Management API in Go
 url: https://github.com/JohnBlue-git/MultiFish
 kind: self-directed
-tags: [backend, api, go]
-short: "Experimental project exploring REST API architecture, backend service design, and modern Golang system development."
+last_reviewed: 2026-11-03
+tags: [backend, api, go, bmc, devops]
+short: "Go service that manages multiple BMC platforms through one API, using Redfish and pluggable OEM providers."
+bullets:
+  - id: mf-api
+    text: "Designed a Go REST service that manages multiple BMC platforms through Redfish and pluggable OEM provider implementations."
+  - id: mf-jobs
+    text: "Added a job scheduler for profile, manager, fan, and PID actions, plus token/basic authentication and configurable rate limiting."
+  - id: mf-deploy
+    text: "Shipped deployment paths for systemd, Docker, and Kubernetes, with Go unit tests and separate design, security, and provider documentation."

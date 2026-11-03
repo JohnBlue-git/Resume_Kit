@@ -2,6 +2,7 @@ name: QEMU-eBPF-Sandbox
 subtitle: Linux Runtime Instrumentation & eBPF Development Framework
 url: https://github.com/JohnBlue-git/QEMU-eBPF-Sandbox
 kind: self-directed
+last_reviewed: 2026-10-29
 tags: [security, ebpf, linux]
 short: "Isolated QEMU environment for eBPF development, with CO-RE examples in C, coroutine C++, and Boost.Asio."
 bullets:

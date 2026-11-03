@@ -94,3 +94,19 @@ hg_gtests:
   source: HTTPS-Guard repo (GoogleTest, wired into Yocto ptest)
   as_of: 2026-10-29
   status: verified
+
+# --- GoVarlink (self-directed) ----------------------------------------------------------
+gv_varlink_vs_dbus:
+  value: "95×"
+  source: GoVarlink README §6.5 (BENCHMARK_ITERATIONS=20000)
+  as_of: 2026-11-03
+  status: verified
+  note: >-
+    Workload-specific: Varlink C++ 20350.90 Ops/s vs a D-Bus C++ sample at 213.35 Ops/s.
+    Say "in this benchmark", and be ready to explain the broker hop and why the D-Bus number is
+    a short sample.
+gv_rss_lower:
+  value: "23%"
+  source: GoVarlink README §6.5 (3840 KiB vs 4992 KiB)
+  as_of: 2026-11-03
+  status: verified

@@ -107,7 +107,7 @@ strong { color:var(--navy); }
   <div class="contact">
     <span>{{ icon('pin') }}{{ m.profile.location }}</span>
     <span>{{ icon('mail') }}<a href="mailto:{{ m.profile.email }}">{{ m.profile.email }}</a></span>
-    <span>{{ icon('phone') }}{{ m.profile.phone }}</span>
+    {% if m.profile.get('phone') %}<span>{{ icon('phone') }}{{ m.profile.phone }}</span>{% endif %}
     {% for l in m.profile.links %}<span>{{ icon(l.icon | default('link')) }}<a href="{{ l.url }}">{{ short_url(l.url) }}</a></span>{% endfor %}
   </div>
 </header>

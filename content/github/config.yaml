@@ -1,0 +1,7 @@
+# Settings for tools/github_sync.py
+user: JohnBlue-git
+# Repos to collect even if discovery misses them (private repos need GITHUB_TOKEN)
+include:
+  - RedfishAutoYamlTestInterview
+# Repos to ignore entirely (forks, experiments you never want on a resume)
+exclude: []

@@ -2,6 +2,7 @@ name: HTTPS-Guard
 subtitle: eBPF-Based Runtime Intrusion Detection for OpenBMC Management Interfaces
 url: https://github.com/JohnBlue-git/HTTPS-Guard
 kind: self-directed
+last_reviewed: 2026-11-03
 tags: [security, ebpf, bmc, flagship]
 short: "eBPF-based runtime intrusion detection for OpenBMC HTTPS/Redfish management traffic."
 bullets:

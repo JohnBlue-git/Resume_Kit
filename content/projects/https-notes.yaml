@@ -2,6 +2,7 @@ name: HTTPS_Notes
 subtitle: TLS / PKI & HTTPS Security Deep-Dive
 url: https://github.com/JohnBlue-git/HTTPS_Notes
 kind: self-directed
+last_reviewed: 2026-10-29
 tags: [security, tls]
 short: "TLS/PKI and HTTPS security guide, grounded in the OpenBMC bmcweb source."
 bullets:

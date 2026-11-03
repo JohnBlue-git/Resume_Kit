@@ -14,4 +14,4 @@ experience:
   - {file: sinopac, select: [core]}
 projects:
   title: Open-Source Projects (self-directed)
-  short: [multifish, howto-sdbusplus, govarlink, howto-yocto, howto-pldm]
+  short: [multifish, howto-sdbusplus, govarlink, producer-consumer-design, howto-pldm, howto-yocto]

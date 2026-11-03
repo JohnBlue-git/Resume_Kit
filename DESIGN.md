@@ -97,6 +97,24 @@ sequenceDiagram
 - `deck/build.sh` orchestrates generation, merging, optional PDF export via LibreOffice, and conversion to HTML.
 - `deck/src/tohtml.py` converts the final PPTX into a self-contained interactive HTML presentation. `deck/src/qa_interact.py` smoke-tests its navigation and interactions.
 
+## Content Maintenance
+
+```mermaid
+flowchart LR
+    GH[GitHub repos] --> SY[tools/github_sync.py]
+    SY --> SN[content/github/snapshot.yaml]
+    SY --> RP[out/github/report.md]
+    IN[content/inbox/ notes] --> SK[Claude skills<br/>record / sync / tailor]
+    RP --> SK
+    JD[job description] --> JM[tools/jd_match.py] --> SK
+    SK -->|proposed YAML diff, human approval| C[content/ and targets/]
+    C --> VA[resume/validate.py] --> B[resume/build.py]
+```
+
+- `content/tags.yaml` is the controlled vocabulary (bullet and project tags, flavors, ownership, project kinds, skill tiers and levels). `resume/validate.py` rejects anything outside it and every broken reference, before any rendering.
+- `tools/github_sync.py` and `tools/jd_match.py` only read and report. Changes to `content/` go through a skill or a person, and then through the same validation and build checks.
+- `last_reviewed` on each project records when it was last checked against its repo; the validator warns when the snapshot shows newer commits.
+
 ## Design Boundaries
 
 - YAML is the editable source of truth for resume content; generated files under `out/` are build artifacts and should not be edited directly.
