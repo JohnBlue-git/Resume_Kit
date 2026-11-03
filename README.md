@@ -1,6 +1,6 @@
 # Resume Kit
 
-Generate tailored resumes and an interview presentation from this repository's career content. For the project architecture and component relationships, see [DESIGN.md](DESIGN.md). For how to record experience, projects, skills, and numbers, see [GUIDE.md](GUIDE.md).
+Generate tailored resumes and an interview presentation from this repository's career content. For the project architecture and component relationships, see [docs/DESIGN.md](docs/DESIGN.md). For how to record experience, projects, skills, and numbers, see [docs/GUIDE.md](docs/GUIDE.md).
 
 ## Setup
 
@@ -45,6 +45,20 @@ Resume builds first run `resume/validate.py` (unknown tags or flavors, duplicate
 | Unverified facts | warning, listed per target |
 
 The `.review.md` sheet records each bullet's ownership and the source of each number. It is for interview preparation, not for sending.
+
+## Demo
+
+Snapshots of the generated output. Run `make resume` and `make deck` to produce the full files in `out/`, which is git-ignored.
+
+**Resume** (`bmc` target, page 1 of the PDF; contact block redacted):
+
+![BMC resume, page 1](docs/demo/resume-bmc-1.png)
+
+**Interview deck** (PDF pages 2–3 of 56 from `out/deck/Yujen_Lan_Interview_Deck.pdf`):
+
+![Deck slide 2: context](docs/demo/deck-02-context.png)
+
+![Deck slide 3: experience](docs/demo/deck-03.png)
 
 ## Everyday edits
 

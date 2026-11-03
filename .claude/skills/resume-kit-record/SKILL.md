@@ -8,7 +8,7 @@ description: Record new work, projects, skills, or numbers into the Resume_Kit r
 Use when the user says things like "record this", "add my new project", "I did X at work",
 "process the inbox", or pastes notes (any language) about their work.
 
-Follow the shared steps at the end of this file, and read the repo's `GUIDE.md`.
+Follow the shared steps at the end of this file, and read the repo's [GUIDE.md](../../../docs/GUIDE.md).
 
 ## Steps
 
@@ -21,7 +21,7 @@ Follow the shared steps at the end of this file, and read the repo's `GUIDE.md`.
    - skill → `content/skills.yaml` (with `evidence` ids that exist)
    - number → `content/facts.yaml`
    - not resume material → say so and leave it.
-3. **Draft the YAML**, following GUIDE.md: action + scope + result, bold lead phrase, numbers as
+3. **Draft the YAML**, following [GUIDE.md](../../../docs/GUIDE.md): action + scope + result, bold lead phrase, numbers as
    `{{ f.key }}`, `tags` from tags.yaml only, `default` text plus `bmc`/`security` variants only
    when the framing really differs. If something duplicates an existing bullet, propose editing
    that bullet instead of adding a new one.
