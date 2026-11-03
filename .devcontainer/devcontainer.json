@@ -1,0 +1,11 @@
+{
+  "name": "career-kit",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y --no-install-recommends libreoffice-impress poppler-utils fonts-crosextra-carlito fonts-crosextra-caladea && make setup && python -m playwright install-deps chromium",
+  "customizations": {
+    "vscode": { "extensions": ["redhat.vscode-yaml"] }
+  }
+}

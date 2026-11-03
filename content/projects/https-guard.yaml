@@ -1,0 +1,18 @@
+name: HTTPS-Guard
+subtitle: eBPF-Based Runtime Intrusion Detection for OpenBMC Management Interfaces
+url: https://github.com/JohnBlue-git/HTTPS-Guard
+kind: self-directed
+tags: [security, ebpf, bmc, flagship]
+short: "eBPF-based runtime intrusion detection for OpenBMC HTTPS/Redfish management traffic."
+bullets:
+  - id: hg-ids
+    text: "Built a host intrusion detection system combining eBPF (uprobes on OpenSSL's SSL_write, optional XDP enforcement) with Redfish EventService to detect and block malicious HTTPS/Redfish management traffic in real time."
+  - id: hg-rules
+    text: "Implemented {{ f.hg_detectors }} distinct detection rules (outdated TLS versions, payload anomalies, certificate-access violations, volumetric attack patterns) and verified them end-to-end on a QEMU-emulated OpenBMC."
+  - id: hg-tests
+    optional: true
+    text: "Covered the detection logic with {{ f.hg_gtests }} GoogleTest cases wired into Yocto ptest."
+  - id: hg-production
+    text: "Delivered a production-oriented design: systemd integration, configuration management, event logging, and documented platform-specific constraints."
+  - id: hg-asio
+    text: "Connected kernel-space instrumentation to a userspace C++/Boost.Asio daemon for asynchronous event processing."

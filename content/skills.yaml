@@ -1,0 +1,67 @@
+# Skill inventory, from the three-tier analysis (技能盤點):
+#   tier:  company    - tied to Insyde/SinoPac internals; never printed (public: false)
+#          industry   - BMC / server management ecosystem; rare and valuable for A-type roles
+#          transferable - the real assets, used in every direction
+#   level: expert | proficient | working | conceptual
+#          (draft levels; adjust them. Targets can hide anything below a min_level.)
+#   evidence: where an interviewer can verify it (project ids, experience bullet ids)
+
+groups:
+  software-engineering:
+    label: Software Engineering
+    items:
+      - {name: Software Architecture, tier: transferable, level: proficient, evidence: [validation-platform, modernize]}
+      - {name: API Design, tier: transferable, level: proficient, evidence: [schema-refactor, multifish]}
+      - {name: OOP, tier: transferable, level: expert}
+      - {name: Design Patterns, tier: transferable, level: proficient}
+      - {name: RAII, tier: transferable, level: expert, evidence: [raii-libs]}
+      - {name: Concurrency & Asynchronous Programming, tier: transferable, level: proficient, evidence: [stability, https-guard]}
+      - {name: Performance Optimization, tier: transferable, level: proficient, evidence: [startup, schema-refactor, sinopac-speedup]}
+      - {name: System-Level Debugging, tier: transferable, level: expert, evidence: [stability, cross-layer]}
+      - {name: Refactoring, tier: transferable, level: proficient}
+
+  platform-management:
+    label: Platform Management Ecosystem
+    items:
+      - {name: DMTF Redfish, tier: industry, level: expert, evidence: [validation-platform, compliance]}
+      - {name: OpenBMC, tier: industry, level: proficient}
+      - {name: bmcweb, tier: industry, level: proficient, evidence: [port-maintain, https-notes]}
+      - {name: MCTP, tier: industry, level: conceptual}
+      - {name: PLDM, tier: industry, level: conceptual, evidence: [howto-pldm]}
+      - {name: IPMI, tier: industry, level: conceptual}
+      - {name: DBus, tier: industry, level: proficient, evidence: [howto-sdbusplus]}
+      - {name: Yocto / BitBake, tier: industry, level: working, evidence: [repo-reorg, howto-yocto]}
+
+  security-observability:
+    label: Security & Observability
+    items:
+      - {name: eBPF, tier: transferable, level: working, evidence: [https-guard, qemu-ebpf-sandbox]}
+      - {name: XDP, tier: transferable, level: working, evidence: [https-guard]}
+      - {name: uprobes / kprobes, tier: transferable, level: working, evidence: [https-guard]}
+      - {name: TLS / SSL / PKI, tier: transferable, level: proficient, evidence: [https-notes, auth-tls]}
+      - {name: OpenSSL, tier: transferable, level: working, evidence: [https-notes]}
+      - {name: Linux observability & tracing, tier: transferable, level: working}
+      - {name: Host intrusion detection concepts, tier: transferable, level: working, evidence: [https-guard]}
+
+  languages-tools:
+    label: Languages & Tools
+    items:
+      - {name: "C++", tier: transferable, level: expert}
+      - {name: C, tier: transferable, level: proficient}
+      - {name: Python, tier: transferable, level: proficient}
+      - {name: Bash, tier: transferable, level: working}
+      - {name: CMake, tier: transferable, level: proficient}
+      - {name: Meson, tier: transferable, level: working}
+      - {name: "CI/CD", tier: transferable, level: working, evidence: [sinopac-cicd]}
+      - {name: Linux, tier: transferable, level: proficient}
+      - {name: Systemd, tier: transferable, level: working}
+      - {name: Git, tier: transferable, level: proficient}
+
+  # Never printed. Kept so you remember which stories are portable and which are not.
+  company-internal:
+    label: Company-internal (not portable)
+    public: false
+    items:
+      - {name: Insyde Redfish validation platform source code and internal API specs, tier: company}
+      - {name: Insyde meta-layer / multi-repo structure and build-release conventions, tier: company}
+      - {name: SinoPac internal trading/backend system logic, tier: company}

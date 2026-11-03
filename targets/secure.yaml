@@ -1,0 +1,19 @@
+# Direction B: security / detection engineering (eBPF, cloud-native runtime security).
+# Mirrors Resume_Secure_v2, trimmed from 3 pages to 2: delivery/collaboration bullets dropped,
+# auth/TLS bullet added (from the deck's experience slide).
+output: Resume_Secure
+role: Systems Software Engineer · Security & Detection
+flavor: [security, bmc, default]
+headline: >-
+  Systems Software Engineer with deep BMC/software domain expertise. Built and verified an
+  eBPF-based runtime intrusion detection system (HTTPS-Guard, self-directed) for OpenBMC, extending a
+  systems/backend engineering background into security and detection engineering.
+layout: [summary, projects, skills, experience, education]
+summary:   {select: [core, security]}
+skills:    {groups: [software-engineering, security-observability, languages-tools]}
+experience:
+  - {file: insyde,  select: [core, security, bmc-depth], exclude: [docs]}
+  - {file: sinopac, select: [core]}
+projects:
+  title: Highlighted Security & Systems Projects (self-directed)
+  detailed: [https-guard, qemu-ebpf-sandbox, https-notes]

@@ -1,0 +1,5 @@
+name: HowToPLDM
+url: https://github.com/JohnBlue-git/HowToPLDM
+kind: self-directed
+tags: [bmc, protocol]
+short: "Technical notes and implementation examples focused on protocol architecture and system integration concepts."

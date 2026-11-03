@@ -1,0 +1,23 @@
+company: SinoPac Securities
+title: Software Engineer
+start: June 2023
+end: April 2024
+
+bullets:
+  - id: sinopac-backend
+    ownership: contributed
+    tags: [core]
+    text:
+      default: "Developed and maintained backend applications using C++ on Linux platforms."
+
+  - id: sinopac-speedup
+    ownership: owned
+    tags: [core, performance]
+    text:
+      default: "Improved data-processing efficiency by {{ f.data_processing_speedup }} through algorithm optimization and workflow redesign."
+
+  - id: sinopac-cicd
+    ownership: contributed
+    tags: [core, delivery]
+    text:
+      default: "Built automated CI/CD pipelines integrating build validation and testing processes, reducing manual effort and improving software quality."

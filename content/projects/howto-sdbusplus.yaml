@@ -1,0 +1,5 @@
+name: HowToSDBusPlus
+url: https://github.com/JohnBlue-git/HowToSDBusPlus
+kind: self-directed
+tags: [bmc, ipc, cpp, linux]
+short: "Practical guide and implementation examples for modern C++ DBus service development, inter-process communication, and Linux system programming."

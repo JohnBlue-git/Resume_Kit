@@ -1,0 +1,5 @@
+name: GoVarlink
+url: https://github.com/JohnBlue-git/GoVarlink
+kind: self-directed
+tags: [ipc, go, linux]
+short: "Implementation examples and experiments focused on lightweight IPC mechanisms and service communication."

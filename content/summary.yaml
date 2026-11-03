@@ -1,0 +1,35 @@
+# Summary bullets. Same schema as experience bullets (id / tags / text variants).
+# Flavors used here: default (general software), bmc, security.
+
+bullets:
+  - id: sum-experience
+    tags: [core]
+    text:
+      default: "Software Engineer with 3+ years of experience developing Linux-based system software and backend services using Modern C++ and Python. Strong expertise in C++, OOP, API design, concurrency, and Linux systems."
+      bmc: "Software Engineer with 3+ years of experience developing Linux-based platform management software using Modern C++, Python, and OpenBMC technologies."
+      security: "Software Engineer with 3+ years of experience building Linux-based system software and backend services in Modern C++ and Python, including deep hands-on work inside a real BMC/OpenBMC management-plane codebase (Redfish APIs, DBus services)."
+
+  - id: sum-modernization
+    tags: [general]
+    text:
+      default: "Experienced in software architecture modernization, performance optimization, large-scale codebase maintenance, and system-level debugging."
+
+  - id: sum-bmc
+    tags: [bmc]
+    text:
+      default: "Experienced in **DMTF Redfish, OpenBMC**, API development, platform management services, and software architecture modernization. Proven track record of improving performance, maintainability, interoperability, and standards compliance across BMC platforms."
+
+  - id: sum-debug-security
+    tags: [security]
+    text:
+      default: "Daily **systems-level debugging experience** with the issue classes at the core of memory-safety and concurrency security work: use-after-free, object-lifetime defects, resource-ownership bugs, and race conditions."
+
+  - id: sum-validator-gap
+    tags: [core]
+    text:
+      default: "Identified structural blind spots in an industry-standard validation tool (DMTF Redfish Validator): it couldn't verify field presence or operation ordering, only formatting. Designed a **new validation engine** to close the gap; it now covers {{ f.val_schemas }} Redfish schemas and {{ f.val_test_cases }} test cases across {{ f.val_platforms }} hardware platforms, replacing {{ f.val_replaced_modules }} manually-maintained modules."
+
+  - id: sum-https-guard
+    tags: [security]
+    text:
+      default: "**Built and verified HTTPS-Guard** (self-directed project), an eBPF-based runtime intrusion detection system for BMC management interfaces (uprobes + XDP, {{ f.hg_detectors }} detection rules, Redfish EventService alerting), demonstrated end-to-end on a QEMU-emulated OpenBMC."

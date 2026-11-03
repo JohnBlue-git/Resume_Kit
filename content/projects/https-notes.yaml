@@ -1,0 +1,13 @@
+name: HTTPS_Notes
+subtitle: TLS / PKI & HTTPS Security Deep-Dive
+url: https://github.com/JohnBlue-git/HTTPS_Notes
+kind: self-directed
+tags: [security, tls]
+short: "TLS/PKI and HTTPS security guide, grounded in the OpenBMC bmcweb source."
+bullets:
+  - id: hn-guide
+    text: "Authored a comprehensive technical guide covering cryptography fundamentals, TLS/SSL handshake mechanics, certificate/PKI tooling (OpenSSL), and HTTP protocol evolution (1.0 to 3)."
+  - id: hn-attacks
+    text: "Documented real-world attack history (BEAST, CRIME, POODLE, Heartbleed, ROBOT) and translated each into concrete hardening checklists (protocol/cipher selection, OCSP stapling, mTLS, automated renewal)."
+  - id: hn-bmcweb
+    text: "Grounded the guide in a real-world C++ case study by walking through production source code (OpenBMC bmcweb)."

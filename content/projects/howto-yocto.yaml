@@ -1,0 +1,5 @@
+name: HowToYocto
+url: https://github.com/JohnBlue-git/HowToYocto
+kind: self-directed
+tags: [bmc, build, linux]
+short: "Documentation and practical examples covering Linux build systems, software integration, and platform customization."

@@ -1,0 +1,8 @@
+{
+  "name": "career-kit-deck",
+  "private": true,
+  "description": "Interview deck generator (pptxgenjs slides merged into base.pptx)",
+  "dependencies": {
+    "pptxgenjs": "4.0.1"
+  }
+}

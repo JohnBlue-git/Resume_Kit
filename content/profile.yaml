@@ -1,0 +1,18 @@
+# Who you are. Shared by every resume target and the deck title slide.
+name: Yujen Lan
+location: Taipei
+email: johnblue.git@gmail.com
+phone: "0908517935"
+links:
+  - label: GitHub
+    url: https://github.com/JohnBlue-git
+    icon: code
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/yu-jen-lan/
+    icon: user
+
+education:
+  - school: National Cheng Kung University (NCKU)
+    degrees:
+      - {degree: Master Degree in Systems and Naval Mechatronic Engineering, year: 2021, gpa: "4.3"}
+      - {degree: Bachelor Degree in Systems and Naval Mechatronic Engineering, year: 2018, gpa: "3.7"}

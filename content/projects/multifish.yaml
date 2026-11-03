@@ -1,0 +1,5 @@
+name: MultiFish
+url: https://github.com/JohnBlue-git/MultiFish
+kind: self-directed
+tags: [backend, api, go]
+short: "Experimental project exploring REST API architecture, backend service design, and modern Golang system development."

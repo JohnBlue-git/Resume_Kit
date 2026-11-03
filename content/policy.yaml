@@ -1,0 +1,38 @@
+# Rules every build enforces. A violation fails the build with the offending text.
+# Sources: interview reflection (面試心得與簡報調整), skills inventory, and corrections made
+# while building the deck.
+
+# Claims you must not make. Case-insensitive regular expressions, checked on rendered text.
+banned:
+  - pattern: 'responsible for (the )?BMC security'
+    why: Overclaims ownership; you work on management-plane software, not BMC security as a whole.
+  - pattern: 'designed (the )?TLS architecture'
+    why: You configure and use TLS at the application layer; you did not design the TLS architecture.
+  - pattern: 'secure ?boot|root of trust|firmware signing|\bTPM\b'
+    why: Hardware trust chain is out of scope for your role; keep the scope to management-plane software.
+  - pattern: '\b(ASan|TSan|UBSan)\b|sanitizer'
+    why: Sanitizer runs have not been done on HTTPS-Guard (deck correction).
+  - pattern: 'QEMU[- ]based hardware|live QEMU hardware'
+    why: QEMU is an emulator; say "QEMU-emulated OpenBMC".
+  - pattern: 'RD\s*:\s*QA\s*\d+\s*%'
+    why: Use "RD:QA 1:1", not a percentage.
+
+# Known typos from the v2 resumes, kept here so they never come back.
+typos:
+  - longterm
+  - objectoriented
+  - upstreamOpenBMC
+  - months weeks
+
+# Lead verbs that claim ownership. Allowed only on bullets whose ownership is "owned".
+ownership_verbs: ['Led', 'Lead', 'Owned', 'Spearheaded', 'Architected', 'Cut']
+
+# Keywords that must survive PDF text extraction intact (what an ATS reads).
+# Checked only when the keyword appears in the rendered HTML.
+ats_keywords: [Redfish, OpenBMC, workflow, efficiency, profiling, identified, configuration, flexibility, firmware, verified, field, certificate, filtering, filesystem, specifications, findings]
+
+# Every self-directed project must be visibly labeled as such.
+self_directed_label: self-directed
+
+# Hard limits
+max_pages: 2

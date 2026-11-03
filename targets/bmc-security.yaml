@@ -1,0 +1,20 @@
+# Direction A (DRAFT): BMC / server management-plane software security.
+# New target assembled from existing bullets; headline is a draft, review before sending.
+# Scope: management-plane software only (Redfish API surface, DBus services, auth/session,
+# runtime monitoring). No hardware trust chain; policy.yaml blocks those claims.
+output: Resume_BMC_Security
+role: BMC Software Engineer · Security Focus
+flavor: [security, bmc, default]
+headline: >-
+  BMC Management-Plane Software Engineer with a security focus: Redfish API surface, DBus
+  services, authentication and TLS configuration, and eBPF runtime monitoring on OpenBMC.
+layout: [summary, skills, experience, projects, education]
+summary:   {select: [core, bmc, security]}
+skills:    {groups: [software-engineering, platform-management, security-observability, languages-tools]}
+experience:
+  - {file: insyde,  select: [core, security, bmc-depth], include: [fw-update]}
+  - {file: sinopac, select: [core]}
+projects:
+  title: Security Projects (self-directed)
+  detailed: [https-guard]
+  short: [https-notes, qemu-ebpf-sandbox, howto-sdbusplus, howto-pldm]

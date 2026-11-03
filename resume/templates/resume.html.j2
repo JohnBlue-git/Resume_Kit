@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ m.profile.name }} – Resume</title>
+{#- Icons are inline SVG, drawn as vector shapes: they print sharply and add no text to the PDF,
+    so an ATS never sees emoji or icon-font garbage. -#}
+{%- macro icon(name) -%}
+<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+{%- if name == 'pin' -%}<path d="M12 21.5s6.5-6 6.5-11.2a6.5 6.5 0 0 0-13 0c0 5.2 6.5 11.2 6.5 11.2z"/><circle cx="12" cy="10.2" r="2.3"/>
+{%- elif name == 'mail' -%}<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/>
+{%- elif name == 'phone' -%}<rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M10.5 18.2h3"/>
+{%- elif name == 'code' -%}<path d="M8.5 7L3.5 12l5 5M15.5 7l5 5-5 5"/>
+{%- elif name == 'user' -%}<circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c.6-3.8 3.7-5.8 7.5-5.8s6.9 2 7.5 5.8"/>
+{%- else -%}<path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/>
+{%- endif -%}</svg>
+{%- endmacro -%}
+{%- macro short_url(u) -%}{{ u | replace('https://', '') | replace('www.', '') | trim('/') }}{%- endmacro -%}
+<style>
+{{ fonts }}
+:root {
+  --navy:#0F2440; --navy2:#16324F; --teal:#00B8A9; --teal-dk:#00897E; --ice:#CFE3F2;
+  --wash:#EEF5FA; --chip:#F1F5F9; --line:#D5E0EA; --ink:#16232F; --muted:#5C6B7A;
+  --px:14mm; --pt:11mm;
+}
+/* Page margins live on .page (cloned on every printed page) so the header band can run edge to edge. */
+@page { size:A4; margin:0; }
+* { box-sizing:border-box; }
+html { background:#dfe5eb; }
+body { margin:0; font-family:'Arimo', Arial, Helvetica, sans-serif; color:var(--ink); font-size:9.9pt;
+       line-height:1.3; font-variant-ligatures:none; font-feature-settings:"liga" 0;
+       -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.page { background:#fff; max-width:210mm; margin:18px auto; padding:0 var(--px) 12mm;
+        box-shadow:0 2px 10px rgba(15,36,64,.18); overflow:hidden; }
+@media print { html { background:#fff; } .page { margin:0; padding:10mm var(--px) 10mm; max-width:none; box-shadow:none; overflow:visible;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone; } .top { margin-top:-10mm; } }
+a { color:inherit; text-decoration:none; }
+.ic { width:1.05em; height:1.05em; flex:none; fill:none; stroke:currentColor; stroke-width:1.9;
+      stroke-linecap:round; stroke-linejoin:round; vertical-align:-0.15em; }
+
+/* ---------- header band (full bleed) ---------- */
+.top { margin:0 calc(-1 * var(--px)); padding:8mm var(--px) 6mm; background:var(--navy); color:#fff;
+       border-bottom:3pt solid var(--teal); display:grid; grid-template-columns:1fr auto; align-items:center; gap:14pt; }
+.top h1 { font-size:25pt; margin:0; line-height:1.1; }
+.top .role { margin-top:5pt; color:var(--teal); font-weight:700; font-size:10.5pt; }
+.contact { display:grid; grid-template-rows:repeat(3, auto); grid-auto-flow:column; gap:3.5pt 18pt; color:var(--ice); font-size:9.2pt; }
+.contact > span { display:flex; align-items:center; gap:5pt; white-space:nowrap; }
+.contact .ic { color:var(--teal); }
+.contact a:hover { color:#fff; }
+.headline { margin:7pt 0 2pt; padding:5pt 8pt; background:var(--wash); border-left:3pt solid var(--teal);
+            color:var(--navy); font-weight:700; font-size:10pt; line-height:1.35; }
+
+/* ---------- sections ---------- */
+section { margin-top:8.5pt; }
+h2 { display:flex; align-items:center; gap:6pt; margin:0 0 4pt; font-size:10.8pt; letter-spacing:.03em;
+     text-transform:uppercase; color:var(--navy); break-after:avoid; }
+h2::before { content:""; width:6pt; height:6pt; background:var(--teal); flex:none; }
+h2::after { content:""; flex:1; border-bottom:1pt solid var(--line); }
+h3 { margin:0; font-size:10.6pt; color:var(--navy); }
+ul { margin:2pt 0 0; padding-left:11pt; }
+li { margin:0 0 2pt; padding-left:1pt; break-inside:avoid; }
+li::marker { color:var(--teal-dk); font-size:.85em; }
+strong { color:var(--navy); }
+
+/* skills: label column + chips, all rows aligned */
+.skills { display:grid; grid-template-columns: 40mm 1fr; gap:4pt 8pt; align-items:start; }
+.skills .lab { font-weight:700; color:var(--navy); padding-top:1.5pt; }
+.chips { display:flex; flex-wrap:wrap; gap:2.5pt 3pt; }
+.chip { background:var(--chip); border:.6pt solid var(--line); border-radius:3pt; padding:.3pt 4pt; font-size:9pt; white-space:nowrap; }
+
+/* experience */
+.job + .job { margin-top:6pt; }
+.jobhead { display:grid; grid-template-columns: 1fr auto; align-items:center; gap:10pt; break-after:avoid;
+           padding-bottom:2pt; border-bottom:.6pt dashed var(--line); }
+.jobhead .role { color:var(--muted); font-weight:400; }
+.when { background:var(--wash); color:var(--teal-dk); font-weight:700; font-size:8.8pt; padding:1pt 6pt; border-radius:8pt; white-space:nowrap; }
+.src { display:inline-flex; align-items:center; gap:4pt; color:var(--teal-dk); font-size:8.8pt; margin-top:1pt; }
+
+/* projects */
+.proj { margin-bottom:5pt; padding:4pt 8pt 3pt; background:#F8FAFC; border-left:3pt solid var(--teal); border-radius:0 4pt 4pt 0; }
+.projhead { display:grid; grid-template-columns: 1fr auto; gap:10pt; align-items:baseline; break-after:avoid; }
+.proj .sub { color:var(--muted); font-size:9.2pt; margin-top:.5pt; break-after:avoid; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:5pt; }
+.card { border:.6pt solid var(--line); border-radius:4pt; padding:4pt 7pt; break-inside:avoid; display:flex; flex-direction:column; gap:1.5pt; }
+.card p { margin:0; font-size:9.2pt; color:#2b3a48; flex:1; }
+
+/* education */
+.edu-school { margin-bottom:2pt; }
+.deg { display:grid; grid-template-columns: 1fr auto; gap:10pt; padding:1.5pt 0; }
+.deg .meta { color:var(--muted); white-space:nowrap; }
+.deg .meta b { color:var(--teal-dk); }
+
+@media screen and (max-width: 800px) {
+  :root { --px:16px; }
+  .page { margin:0; }
+  .top, .skills, .grid2 { grid-template-columns:1fr; }
+  .contact { grid-auto-flow:row; grid-template-rows:none; }
+  .jobhead, .projhead, .deg { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="top">
+  <div><h1>{{ m.profile.name }}</h1>{% if m.role %}<div class="role">{{ m.role }}</div>{% endif %}</div>
+  <div class="contact">
+    <span>{{ icon('pin') }}{{ m.profile.location }}</span>
+    <span>{{ icon('mail') }}<a href="mailto:{{ m.profile.email }}">{{ m.profile.email }}</a></span>
+    <span>{{ icon('phone') }}{{ m.profile.phone }}</span>
+    {% for l in m.profile.links %}<span>{{ icon(l.icon | default('link')) }}<a href="{{ l.url }}">{{ short_url(l.url) }}</a></span>{% endfor %}
+  </div>
+</header>
+<div class="headline">{{ m.headline }}</div>
+
+{% for sec in m.layout %}
+{% if sec == 'summary' %}
+<section><h2>Summary</h2><ul>{% for b in m.summary %}<li>{{ b.html }}</li>{% endfor %}</ul></section>
+
+{% elif sec == 'skills' %}
+<section><h2>Technical Skills</h2>
+  <div class="skills">
+  {% for g in m.skills %}<div class="lab">{{ g.label }}</div><div class="chips">{% for i in g['items'] %}<span class="chip">{{ i }}</span>{% endfor %}</div>{% endfor %}
+  </div>
+</section>
+
+{% elif sec == 'experience' %}
+<section><h2>Experience</h2>
+{% for job in m.experience %}
+  <div class="job">
+    <div class="jobhead"><h3>{{ job.company }} <span class="role">· {{ job.title }}</span></h3><span class="when">{{ job.dates }}</span></div>
+    <ul>{% for b in job.bullets %}<li>{{ b.html }}{% if b.link %}<br><a class="src" href="{{ b.link }}">{{ icon('code') }}{{ short_url(b.link) }}</a>{% endif %}</li>{% endfor %}</ul>
+  </div>
+{% endfor %}
+</section>
+
+{% elif sec == 'education' %}
+<section><h2>Education</h2>
+{% for e in m.profile.education %}
+  <h3 class="edu-school">{{ e.school }}</h3>
+  {% for d in e.degrees %}<div class="deg"><span>{{ d.degree }}</span><span class="meta">{{ d.year }} · GPA <b>{{ d.gpa }}</b></span></div>{% endfor %}
+{% endfor %}
+</section>
+
+{% elif sec == 'projects' %}
+<section><h2>{{ m.projects_title }}</h2>
+{% for p in m.projects_detailed %}
+  <div class="proj">
+    <div class="projhead"><h3>{{ p.name }}</h3><a class="src" href="{{ p.url }}">{{ icon('code') }}{{ short_url(p.url) }}</a></div>
+    <div class="sub">{{ p.subtitle }}</div>
+    <ul>{% for b in p.bullets %}<li>{{ b.html }}</li>{% endfor %}</ul>
+  </div>
+{% endfor %}
+{% if m.projects_short %}<div class="grid2">
+{% for p in m.projects_short %}
+  <div class="card"><h3>{{ p.name }}</h3><p>{{ p.short_html }}</p><a class="src" href="{{ p.url }}">{{ icon('code') }}{{ short_url(p.url) }}</a></div>
+{% endfor %}
+</div>{% endif %}
+</section>
+{% endif %}
+{% endfor %}
+</main>
+</body>
+</html>

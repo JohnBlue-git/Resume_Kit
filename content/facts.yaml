@@ -1,0 +1,96 @@
+# Every number used in a resume or the deck lives here exactly once.
+# Bullets reference them as {{ f.<key> }}. Change a number here and every output follows.
+#
+# status:
+#   verified    - checked against the named source on as_of
+#   unverified  - carried over from an older resume; confirm before an interview
+#   superseded  - kept only for history; the build refuses to render it
+
+startup_reduction:
+  value: "60%"
+  source: Insyde work (deck p.3, ownership = contributed)
+  as_of: 2026-10-29
+  status: verified
+
+schema_perf_gain:
+  value: "30%"
+  source: Insyde work (deck p.3, ownership = owned)
+  as_of: 2026-10-29
+  status: verified
+
+upstream_porting:
+  value: "from months to weeks"
+  source: deck p.3 + interview reflection (porting itself rotates across the team)
+  as_of: 2026-10-29
+  status: verified
+  note: >-
+    v2 resumes said "month to week" (SW, Secure) and "months weeks" (BMC, missing "to").
+    Unified to the deck wording.
+
+data_processing_speedup:
+  value: "3 to 4 times"
+  source: SinoPac work (resume v2)
+  as_of: 2026-09-18
+  status: unverified
+
+# --- Document-driven validation platform (work project) -------------------------------
+# Source: RedfishAutoYamlTestInterview README / AI_WORKFLOW, same numbers as deck p.11 "Scale & Safety".
+val_schemas:
+  value: "76"
+  source: RedfishAutoYamlTestInterview README (2026-10-29)
+  as_of: 2026-10-29
+  status: verified
+  note: Redfish schemas, standard + OEM
+val_test_cases:
+  value: "297"
+  source: RedfishAutoYamlTestInterview README (2026-10-29)
+  as_of: 2026-10-29
+  status: verified
+  note: plus 325 request variants
+val_platforms:
+  value: "12"
+  source: RedfishAutoYamlTestInterview README (2026-10-29)
+  as_of: 2026-10-29
+  status: verified
+  note: hardware platforms, 2 generations
+val_self_tests:
+  value: "527"
+  source: RedfishAutoYamlTestInterview AI_WORKFLOW (2026-10-29)
+  as_of: 2026-10-29
+  status: verified
+val_replaced_modules:
+  value: "~40"
+  source: resume v2
+  as_of: 2026-09-18
+  status: unverified
+  note: Not in the repo; confirm the count before using it in an interview.
+
+# Old resume figures. Different metric (resource types / checks / configs) from the repo's
+# (schemas / test cases / platforms), so quoting both invites "which one is right?".
+val_resource_types_v2:
+  value: "41"
+  source: resume v2
+  as_of: 2026-09-18
+  status: superseded
+val_checks_v2:
+  value: "~690"
+  source: resume v2
+  as_of: 2026-09-18
+  status: superseded
+val_platform_configs_v2:
+  value: "10"
+  source: resume v2
+  as_of: 2026-09-18
+  status: superseded
+
+# --- HTTPS-Guard (self-directed) ---------------------------------------------------------
+hg_detectors:
+  value: "8"
+  source: HTTPS-Guard repo / deck HTTPS-Guard 1/8
+  as_of: 2026-10-29
+  status: verified
+hg_gtests:
+  value: "67"
+  source: HTTPS-Guard repo (GoogleTest, wired into Yocto ptest)
+  as_of: 2026-10-29
+  status: verified

@@ -1,0 +1,125 @@
+# Bullet schema
+#   id         stable name, used by targets (include / exclude / order) and the deck
+#   ownership  owned | contributed | rotation   (owned = I proposed or changed the design and
+#              I'm called when it breaks; contributed = implemented inside an existing design;
+#              rotation = shared team work). Not printed on the resume; used for interview prep
+#              and by the policy check.
+#   tags       semantic tags; a target selects bullets whose tags match its `select` list
+#   text       wording variants. A target picks the first key in its `flavor` list that exists.
+#              **bold** marks the lead phrase. {{ f.key }} inserts a number from facts.yaml.
+#   link       optional URL printed under the bullet
+
+company: Insyde Software
+title: Software Engineer
+start: July 2024
+end: Present
+
+bullets:
+  - id: startup
+    ownership: contributed
+    tags: [core, performance, debugging]
+    text:
+      default: "**Reduced platform startup time by over {{ f.startup_reduction }}** through startup profiling, dependency analysis, and service initialization optimization."
+      bmc: "**Reduced BMC startup time by over {{ f.startup_reduction }}** through startup profiling, dependency analysis, and service initialization optimization."
+
+  - id: port-maintain
+    ownership: rotation
+    tags: [bmc-depth]
+    text:
+      bmc: "**Ported and maintained platform-specific features on OpenBMC/bmcweb**, while continuously tracking upstream OpenBMC developments and architecture changes."
+
+  - id: upstream
+    ownership: owned
+    tags: [core, process]
+    text:
+      default: "**Designed a scalable integration workflow with an upstream open-source platform** that reduced feature migration effort {{ f.upstream_porting }} while eliminating long-term patch maintenance overhead."
+      bmc: "**Designed a sustained integration workflow with upstream OpenBMC** that reduced porting and patching effort {{ f.upstream_porting }} while eliminating long-term patch maintenance overhead."
+
+  - id: modernize
+    ownership: contributed
+    tags: [core, architecture]
+    text:
+      default: "**Modernized legacy C services into modular Modern C++ architectures**, reducing technical debt and improving long-term maintainability."
+      bmc: "**Modernized legacy platform-management services** into modular Modern C++ and DBus-based architectures, improving maintainability."
+
+  - id: schema-refactor
+    ownership: owned
+    tags: [core, performance, architecture]
+    text:
+      default: "**Refactored API schemas and data models**, improving maintainability, readability, and runtime performance by approximately {{ f.schema_perf_gain }}."
+      bmc: "**Refactored Redfish schemas and service implementations**, improving maintainability, readability, and runtime performance by approximately {{ f.schema_perf_gain }}."
+
+  - id: compliance
+    ownership: contributed
+    tags: [core, standards]
+    text:
+      default: "**Improved standards compliance and interoperability** by resolving API validation and compatibility issues."
+      bmc: "**Improved DMTF Redfish compliance and interoperability** by resolving service-validator findings and protocol compatibility issues."
+
+  - id: auth-tls
+    ownership: contributed
+    tags: [security]
+    text:
+      bmc: "**Implemented and maintained Redfish authentication, role-privilege, and certificate features**, including application-layer TLS use and configuration."
+
+  - id: raii-libs
+    ownership: contributed
+    tags: [core, architecture]
+    text:
+      default: "**Built reusable utility libraries** for resource management, file operations, and lifecycle control using RAII, OOP design patterns, and modern C++ practices."
+      bmc: "**Built reusable utility libraries** for resource management, file operations, and lifecycle control using RAII and object-oriented design principles."
+
+  - id: stability
+    ownership: contributed
+    tags: [core, debugging]
+    text:
+      default: "**Resolved production stability issues** including service crashes, object lifetime defects, resource ownership problems, and concurrency-related issues."
+
+  - id: repo-reorg
+    ownership: rotation
+    tags: [delivery]
+    text:
+      default: "**Reorganized multi-repository projects and build configurations** while preserving development history (Git) and improving maintainability."
+      bmc: "**Reorganized OpenBMC meta-layer structures** and multi-repository projects while preserving development history and improving maintainability."
+
+  - id: reverse-proxy
+    ownership: rotation
+    tags: [delivery, architecture]
+    text:
+      default: "**Upgraded legacy back-end service architecture** to a lightweight reverse-proxy model, improving deployment flexibility and operational simplicity."
+
+  - id: fw-update
+    ownership: rotation
+    tags: [delivery]
+    text:
+      default: "**Simplified deployment workflows** through unified API-driven operations, reducing operational complexity and improving user experience."
+      bmc: "**Simplified firmware update workflows** through unified API-driven multipart update operations, improving usability and deployment efficiency."
+
+  - id: validation-platform
+    ownership: owned
+    tags: [core, testing, flagship]
+    text:
+      default: "**Lead development of an automated validation platform** capable of validating complex API workflows beyond existing industry validation tools."
+      bmc: "**Lead development of an end-to-end Redfish validation platform** capable of validating GET, PATCH, POST, and OEM workflows beyond existing industry validation tools, covering {{ f.val_schemas }} Redfish schemas, {{ f.val_test_cases }} test cases, and {{ f.val_platforms }} hardware platforms."
+    link: https://github.com/JohnBlue-git/RedfishAutoYamlTestInterview
+
+  - id: cross-layer
+    ownership: contributed
+    tags: [core, debugging]
+    text:
+      default: "**Diagnose and resolve cross-layer issues** spanning applications, middleware, operating systems, networking, and platform infrastructure."
+      bmc: "**Diagnose and resolve cross-layer issues** spanning Redfish services, DBus services, platform middleware, Linux systems, networking, and firmware components."
+
+  - id: collaborate
+    ownership: rotation
+    tags: [collaboration]
+    text:
+      default: "**Collaborate with cross-functional engineering teams** to deliver new features, improve software quality, and reduce technical debt."
+      bmc: "**Collaborate with software and firmware teams** to deliver platform-management features and improve overall system reliability."
+
+  - id: docs
+    ownership: contributed
+    tags: [core, docs]
+    text:
+      default: "**Author technical documentation, API specifications, and developer guides** for internal teams and external partners."
+      bmc: "**Author technical API documentation and developer guides** for internal teams and OEM partners."

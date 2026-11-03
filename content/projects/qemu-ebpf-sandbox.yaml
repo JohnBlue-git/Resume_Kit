@@ -1,0 +1,13 @@
+name: QEMU-eBPF-Sandbox
+subtitle: Linux Runtime Instrumentation & eBPF Development Framework
+url: https://github.com/JohnBlue-git/QEMU-eBPF-Sandbox
+kind: self-directed
+tags: [security, ebpf, linux]
+short: "Isolated QEMU environment for eBPF development, with CO-RE examples in C, coroutine C++, and Boost.Asio."
+bullets:
+  - id: qs-env
+    text: "Built an isolated QEMU-based environment for eBPF development and experimentation, with automated build scripts for kernel and filesystem images."
+  - id: qs-core
+    text: "Implemented CO-RE (Compile Once, Run Everywhere) examples across three architectural approaches: procedural C (libbpf/BTF), coroutine-based Modern C++, and Boost.Asio-based production-style I/O."
+  - id: qs-e2e
+    text: "Demonstrated end-to-end interaction between kernel-space instrumentation (XDP filtering, syscall tracing, socket/cgroup filtering) and user-space services."

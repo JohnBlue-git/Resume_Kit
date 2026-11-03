@@ -1,0 +1,17 @@
+# BMC / OpenBMC platform-management roles. Mirrors Resume_BMC_v2.
+output: Resume_BMC
+role: BMC / OpenBMC Platform Software Engineer
+flavor: [bmc, default]
+headline: >-
+  BMC / OpenBMC Platform-Management Software Engineer, focused on Redfish service development
+  and DMTF compliance. Helped cut BMC startup time by {{ f.startup_reduction }} and lead an automated
+  validation platform covering {{ f.val_schemas }} Redfish schemas across {{ f.val_platforms }} hardware platforms.
+layout: [summary, skills, experience, education, projects]
+summary:   {select: [core, bmc]}
+skills:    {groups: [software-engineering, platform-management, languages-tools]}
+experience:
+  - {file: insyde,  select: [core, delivery, collaboration], exclude: [auth-tls, port-maintain]}
+  - {file: sinopac, select: [core]}
+projects:
+  title: Open-Source Projects (self-directed)
+  short: [multifish, howto-sdbusplus, govarlink, howto-yocto, howto-pldm]
