@@ -39,8 +39,8 @@ bullets:
     ownership: contributed
     tags: [core, architecture]
     text:
-      default: "**Modernized legacy C services into modular Modern C++ architectures**, reducing technical debt and improving long-term maintainability."
-      bmc: "**Modernized legacy platform-management services** into modular Modern C++ and DBus-based architectures, improving maintainability."
+      default: "**Modernized legacy C services into modular Modern C++ architectures**, including replacing {{ f.mci_cgi_items }} legacy CGI and proprietary-library interfaces with standard API implementations, reducing technical debt and improving long-term maintainability."
+      bmc: "**Modernized legacy platform-management services** into modular Modern C++ and DBus-based architectures, replacing {{ f.mci_cgi_items }} legacy CGI and proprietary-library interfaces with Redfish APIs (alerts, sessions, TLS ciphers, Kerberos/RADIUS accounts, SOL)."
 
   - id: schema-refactor
     ownership: owned
@@ -73,7 +73,7 @@ bullets:
     ownership: contributed
     tags: [core, debugging]
     text:
-      default: "**Resolved production stability issues** including service crashes, object lifetime defects, resource ownership problems, and concurrency-related issues."
+      default: "**Resolved {{ f.its_issues }} customer- and QA-reported issues** and other production stability defects, including service crashes, object lifetime defects, resource ownership problems, and concurrency-related issues."
 
   - id: repo-reorg
     ownership: rotation

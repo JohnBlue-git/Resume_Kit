@@ -110,3 +110,72 @@ gv_rss_lower:
   source: GoVarlink README §6.5 (3840 KiB vs 4992 KiB)
   as_of: 2026-11-03
   status: verified
+
+# --- Insyde Gerrit history (2024-11-26 to 2026-11-03) ------------------------------------
+# Source: Gerrit query of merged changes with my name attached (564 total; 12 are other
+# owners' changes where I am reviewer, so they are excluded here). Type counts other than
+# ITS and MCI/CGI come from subject-line keywords: estimates.
+gerrit_own_changes:
+  value: "552"
+  source: Gerrit merged-change query, own changes only
+  as_of: 2026-11-03
+  status: verified
+  note: >-
+    By year (all 564): 20 in 2024, 309 in 2025, 235 in 2026. Many are the same fix merged
+    into several branches/platforms.
+gerrit_rm_tickets:
+  value: "~247"
+  source: Gerrit merged-change query, deduplicated by RM ticket
+  as_of: 2026-11-03
+  status: unverified
+  note: Approximate count of distinct RM tickets behind the 564 changes.
+its_issues:
+  value: "38"
+  source: Gerrit merged-change query, ITS# in subject or top of commit message
+  as_of: 2026-11-03
+  status: verified
+  note: >-
+    111 changes (4 in 2024, 86 in 2025, 21 in 2026). ITS issues are a mix of customer- and
+    QA-reported issues.
+its_changes:
+  value: "111"
+  source: Gerrit merged-change query, ITS# in subject or top of commit message
+  as_of: 2026-11-03
+  status: verified
+mci_cgi_items:
+  value: "9"
+  source: Gerrit merged-change query, mci/cgi in commit message
+  as_of: 2026-11-03
+  status: verified
+  note: >-
+    Legacy MCI/CGI interfaces replaced with Redfish APIs (ownership = contributed):
+    OEM Alert features (10 changes, 2026-01..03), sslCipherCtl.cgi (9, 2026-07),
+    libmci Session Management (5, 2025), ExternalAccountProvider Kerberos (5, 2026-10),
+    ManagerNetworkProtocol bhs/oberon (4, 2024-12), mci_get_password_creation_time removal
+    (3, 2025), ExternalAccountProvider RADIUS (2, 2026-09..10), mci_sol for SerialInterface
+    (1, 2026-10), SOL over SSH SessionTimeout (1, 2026-09). Not the same as
+    val_replaced_modules.
+mci_cgi_changes:
+  value: "40"
+  source: Gerrit merged-change query, mci/cgi in commit message
+  as_of: 2026-11-03
+  status: verified
+  note: 4 in 2024, 8 in 2025, 28 in 2026.
+feature_items:
+  value: "~72"
+  source: Gerrit merged-change query, subject-line keywords
+  as_of: 2026-11-03
+  status: unverified
+  note: New features, porting and refactoring; 178 changes (4 / 66 / 108 by year).
+bugfix_items:
+  value: "~38"
+  source: Gerrit merged-change query, subject-line keywords
+  as_of: 2026-11-03
+  status: unverified
+  note: Everyday bug fixes and debugging outside ITS; 138 changes (8 / 109 / 21 by year).
+test_tool_changes:
+  value: "55"
+  source: Gerrit merged-change query, redfish_auto_test changes
+  as_of: 2026-11-03
+  status: unverified
+  note: ~54 items (0 / 16 / 39 by year). Build and maintenance was 42 changes, ~22 items.
