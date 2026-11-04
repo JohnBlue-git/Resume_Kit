@@ -1,4 +1,4 @@
-# BMC / OpenBMC platform-management roles. Mirrors Resume_BMC_v2.
+# BMC / OpenBMC platform-management roles. Legacy comparison: docs/LEGACY.md.
 output: Resume_BMC
 role: BMC / OpenBMC Platform Software Engineer
 flavor: [bmc, default]

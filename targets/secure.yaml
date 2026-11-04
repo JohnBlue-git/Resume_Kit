@@ -1,5 +1,6 @@
 # Direction B: security / detection engineering (eBPF, cloud-native runtime security).
-# Mirrors Resume_Secure_v2, trimmed from 3 pages to 2: delivery/collaboration bullets dropped,
+# Legacy comparison with Resume_Secure_v2: docs/LEGACY.md.
+# Trimmed from 3 pages to 2: delivery/collaboration bullets dropped,
 # auth/TLS bullet added (from the deck's experience slide).
 output: Resume_Secure
 role: Systems Software Engineer · Security & Detection
